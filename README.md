@@ -10,7 +10,7 @@ Five ideas to unlock more revenue from the traffic Photo Recovery already has, p
 | :-- | :-- | :-- | :-- |
 | 1 | Offer the free trial when they close | Closing the ₺2,499.99/year paywall opens one second chance: a 3-day free trial on the same yearly plan. | ARPU +10–15% |
 | 2 | Ask what they lost, then name it | Two taps (what and when), then the paywall says “Recover Your Deleted Photos” instead of “Recover Deleted Data and Files”. | CR +15–20% |
-| 3 | Ask only for photo access up front | Notifications and tracking move from screen one to after the paywall. | CR +10–15% |
+| 3 | Ask for tracking first, one prompt at a time | Tracking is asked first, photo access second, and notifications move to after the paywall. | CR +5–10% |
 | 4 | Put your 8M+ users next to the price | The rating and “8M+ users” move onto the paywall. | CR +10–15% |
 | 5 | Show the scan working on their answer | A short scan that names their answer, then the time left in iPhone's 30-day Recently Deleted window. | CR +10–15% |
 

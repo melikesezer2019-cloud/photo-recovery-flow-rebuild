@@ -510,11 +510,11 @@ a{color:inherit}
       <button class="idea" data-jump="setup">
         <span class="no">03</span>
         <span>
-          <h3>Ask only for photo access up front</h3>
-          <p>Screen one asks for photo access, notifications and tracking, and fires three system prompts in a row before anyone has seen what the app does. Only photo access is needed to scan. The other two can wait until after the paywall.</p>
+          <h3>Ask for tracking first, one prompt at a time</h3>
+          <p>Screen one fires three system prompts in a row — photo access, notifications, then tracking — so tracking comes last, when people are most tired of saying yes. Ask for tracking first and photo access second, and leave notifications until after the paywall.</p>
           <span class="seeit">See the screen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </span>
-        <span class="out"><b>CR +10–15%</b><span>to purchase</span></span>
+        <span class="out"><b>CR +5–10%</b><span>to purchase</span></span>
       </button>
 
       <button class="idea" data-jump="paywall">
@@ -601,6 +601,10 @@ a{color:inherit}
       <div class="pr-tile blue"><svg viewBox="0 0 24 24" fill="#fff"><circle cx="10" cy="7" r="3.4"/><path d="M3.5 19c0-3.6 2.9-6 6.5-6 1.4 0 2.6.3 3.6.9-.4.8-.6 1.6-.6 2.6 0 1 .3 1.9.7 2.5Z"/><path d="M18 11.5 14.5 13v2.4c0 2.2 1.5 4 3.5 4.6 2-.6 3.5-2.4 3.5-4.6V13Z"/><path d="m16.5 15.6 1.1 1.1 2-2.1" stroke="#1B62D0" stroke-width="1.3" fill="none" stroke-linecap="round"/></svg><span data-th="su.t2"></span></div>
     </div>
     <div class="pr-card">
+      <span class="pr-ic blue"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8.5 21c-2-1-3.5-3.4-3.5-6V9.6a1.3 1.3 0 0 1 2.6 0V12h.6V4.8a1.3 1.3 0 0 1 2.6 0V11h.6V3.6a1.3 1.3 0 0 1 2.6 0V11h.6V5a1.3 1.3 0 0 1 2.6 0v9.5c0 3.6-2 6.5-5.5 6.5Z"/></svg></span>
+      <div><h4><span data-t="pm.a"></span></h4><p data-t="pm.ap"></p></div>
+    </div>
+    <div class="pr-card">
       <span class="pr-ic"><svg viewBox="0 0 40 40" id="flower"></svg></span>
       <div><h4><span data-t="su.ph"></span><span class="pr-vck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span></h4>
       <p data-th="su.pp"></p></div>
@@ -609,6 +613,13 @@ a{color:inherit}
   <div class="scr-foot">
     <button class="pr-btn" id="setupBtn" data-t="cont"></button>
     <p class="pr-trust" data-th="trust"></p>
+  </div>
+  <div class="pr-dim" id="attDim">
+    <div class="pr-alert">
+      <h5 data-t="att.h"></h5><p data-t="att.p"></p>
+      <button class="att-go" data-t="att.no"></button>
+      <button class="att-go b" id="attAllow" data-t="att.ok"></button>
+    </div>
   </div>
   <div class="pr-dim" id="alertDim">
     <div class="pr-alert">
@@ -735,10 +746,6 @@ a{color:inherit}
       <span class="pr-ic red"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 3a6 6 0 0 0-6 6v3.6L4.4 15.4c-.4.7.1 1.6.9 1.6h13.4c.8 0 1.3-.9.9-1.6L18 12.6V9a6 6 0 0 0-6-6Zm-2.6 15.5a2.6 2.6 0 0 0 5.2 0Z"/></svg></span>
       <div><h4 data-t="pm.n"></h4><p data-t="pm.np"></p></div>
     </div>
-    <div class="pr-card">
-      <span class="pr-ic blue"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8.5 21c-2-1-3.5-3.4-3.5-6V9.6a1.3 1.3 0 0 1 2.6 0V12h.6V4.8a1.3 1.3 0 0 1 2.6 0V11h.6V3.6a1.3 1.3 0 0 1 2.6 0V11h.6V5a1.3 1.3 0 0 1 2.6 0v9.5c0 3.6-2 6.5-5.5 6.5Z"/></svg></span>
-      <div><h4 data-t="pm.a"></h4><p data-t="pm.ap"></p></div>
-    </div>
   </div>
   <div class="scr-foot">
     <button class="pr-btn" data-t="cont" id="permBtn"></button>
@@ -823,6 +830,10 @@ var T={
  'pm.n':['Notifications','Bildirimler'],
  'pm.np':['We’ll warn you before your media or files are deleted for good.','Medyalarınız veya dosyalarınız kalıcı olarak silinmeden önce sizi uyarırız.'],
  'pm.a':['App Tracking (ATT)','Uygulama Takibi (ATT)'],
+ 'att.h':['Allow “Photo Recovery” to track your activity across other companies’ apps and websites?','“Photo Recovery”, diğer şirketlerin uygulamalarındaki ve web sitelerindeki eylemlerinizi takip etsin mi?'],
+ 'att.p':['Your device identifier will be used to measure which advertising campaigns lead to app installs and in-app actions, and to show you more relevant ads.','Your device identifier will be used to measure which advertising campaigns lead to app installs and in-app actions, and to show you more relevant ads.'],
+ 'att.no':['Ask App Not to Track','Uygulama Beni Takip Etmesin'],
+ 'att.ok':['Allow','İzin Ver'],
  'pm.ap':['This helps us fix bugs and improve your experience based on how you use the app.','Bu, hataları düzeltmemize ve kullanımınıza göre deneyiminizi iyileştirmemize yardımcı olur.']
 };
 /* what was lost: [title, sub, pay-headline noun, lowercase noun, icon class] */
@@ -987,14 +998,15 @@ function runLoader(){
   loadTimers.push(setTimeout(function(){ if(cur==='scan') go('ready'); },(dur+500*k)));
 }
 
-/* the photo-library prompt the app fires from this button */
-function openAlert(){ document.getElementById('alertDim').classList.add('on'); }
-function closeAlert(){ document.getElementById('alertDim').classList.remove('on'); }
+/* the two system prompts the app fires from this button: tracking first, then photos */
+function openAlert(id){ document.getElementById(id).classList.add('on'); }
+function closeAlert(){ document.querySelectorAll('.pr-dim').forEach(function(d){ d.classList.remove('on'); }); }
 
 /* ================= wiring ================= */
 document.querySelectorAll('[data-go]').forEach(function(b){ b.addEventListener('click',function(){ if(!b.disabled) go(b.dataset.go); }); });
 document.querySelectorAll('[data-back]').forEach(function(b){ b.addEventListener('click',back); });
-document.getElementById('setupBtn').addEventListener('click',openAlert);
+document.getElementById('setupBtn').addEventListener('click',function(){ openAlert('attDim'); });
+document.querySelectorAll('.att-go').forEach(function(b){ b.addEventListener('click',function(){ closeAlert(); openAlert('alertDim'); }); });
 document.querySelectorAll('.al-go').forEach(function(b){ b.addEventListener('click',function(){ closeAlert(); S.slide=0; syncScreen(); go('intro'); }); });
 document.getElementById('introBtn').addEventListener('click',function(){ if(S.slide<2){ S.slide++; syncScreen(); } else go('lost'); });
 document.getElementById('weekBtn').addEventListener('click',function(){ S.plan=S.plan==='week'?'year':'week'; syncScreen(); });
@@ -1031,8 +1043,8 @@ function startDemo(){
   demo.iv=setInterval(function(){ document.getElementById('demoProg').style.width=Math.min(100,(Date.now()-demo.t0)/290)+'%'; },200);
   (async function(){
     try{
-      cap('Screen one now asks for photo access only. Notifications and tracking wait until after the paywall.'); await pause(1700,tok);
-      await tap('#setupBtn',tok); await pause(450,tok); await tap('#alAllow',tok);
+      cap('Screen one asks for tracking first, then photo access. Notifications wait until after the paywall.'); await pause(1500,tok);
+      await tap('#setupBtn',tok); await pause(400,tok); await tap('#attAllow',tok); await pause(350,tok); await tap('#alAllow',tok);
       cap('Your three intro slides, unchanged.'); await pause(550,tok);
       await tap('#introBtn',tok); await pause(300,tok); await tap('#introBtn',tok); await pause(300,tok); await tap('#introBtn',tok);
       cap('Two new taps. First: what did they lose? Say, videos.'); await pause(600,tok);
@@ -1059,10 +1071,10 @@ phoneIn.addEventListener('pointerdown',function(e){ if(e.isTrusted && demo.on) s
 <script>
 /* ---- the short panel: hypothesis + potential outcome, nothing else ---- */
 var PANEL = {
-setup:{n:3,t:'Ask only for photo access up front',
- hyp:'Try asking for photo access alone on this screen, <b>because today it also asks for notifications and tracking, and fires three system prompts back to back before the app has shown anything</b>. The scan only needs photos.',
- kept:'Your “Let’s set everything up for you” screen — the green shield, the pink and blue tiles, the photo-access card with its purple check, your button and “Trusted by 8M+ Users”.',
- out:'CR +10–15%'},
+setup:{n:3,t:'Ask for tracking first, one prompt at a time',
+ hyp:'Try asking for tracking first and photo access second, and leaving notifications until after the paywall, <b>because today three system prompts fire back to back with tracking last, when people are most tired of saying yes</b>. Fewer prompts in a row, and the one that feeds your ad measurement goes first.',
+ kept:'Your “Let’s set everything up for you” screen — the green shield, the pink and blue tiles, your tracking and photo-access cards with their own copy, your button and “Trusted by 8M+ Users”.',
+ out:'CR +5–10%'},
 intro:{ctx:true,t:'Your three intro slides',
  kept:'Untouched — the Library mockup, the Duplicates phone, the full-bleed photography, your three lines of copy, the pager dots and your button, in your order.'},
 lost:{n:2,t:'Ask what they lost, then name it',
@@ -1091,10 +1103,10 @@ offer:{n:1,t:'Offer the free trial when they close',
  hyp:'Try a 3-day free trial on the same yearly plan when they press X, <b>because today closing the paywall ends the conversation, and your own App Store replies say the app comes with a 3-day free trial</b>. No new price, no countdown.',
  kept:'Your black, your gradient button and your type. The price is the ₺2,499.99 a year from your own paywall.',
  out:'ARPU +10–15%'},
-perms:{n:3,t:'Ask only for photo access up front',
- hyp:'Try asking for notifications and tracking here, after the paywall, <b>because a system prompt right before the price pulls attention away from it</b>. The copy is the copy from your own setup screen.',
- kept:'Your two permission cards — the red bell, the blue hand, both descriptions — and your button.',
- out:'CR +10–15%'}
+perms:{n:3,t:'Ask for tracking first, one prompt at a time',
+ hyp:'Try asking for notifications here, after the paywall, <b>because it is the one prompt the scan does not need, and every prompt before the price pulls attention away from it</b>. The copy is the copy from your own setup screen.',
+ kept:'Your notifications card — the red bell and its description — and your button.',
+ out:'CR +5–10%'}
 };
 function outBlock(lab,val){
   return '<div class="pn-out"><div class="lab">'+lab+'</div><div class="v">'+val+'</div></div>';
