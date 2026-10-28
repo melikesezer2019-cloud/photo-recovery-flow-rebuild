@@ -20,6 +20,36 @@ The prototype has English and Turkish, light and dark, a 30-second walkthrough, 
 
 A flow can't show iOS system prompts itself, but a button's custom action can ask the app to. Give each permission card's button a custom action (`request_att`, `request_photos`, and `request_push` after the paywall), followed by Navigate next. The app shows the matching system prompt when it receives the ID. The order and the cards stay editable from the dashboard. Log the tracking answer as a user attribute to compare opt-in, not just purchases. See [Actions](https://adapty.io/docs/onboarding-actions.md) in the Adapty docs.
 
+## Rebuild it as an Adapty flow
+
+The prototype can be rebuilt as a real Adapty flow in your own account with Claude Code, the [adapty-skills](https://github.com/adaptyteam/adapty-skills) plugin and its `flow-generator` skill.
+
+**Before you start**
+
+- Install the plugin (`claude plugin marketplace add adaptyteam/adapty-skills`, then `claude plugin install adapty-skills@adapty`) and sign the Adapty CLI in to your account.
+- Have your weekly and yearly subscriptions, and the 3-day free trial offer, in App Store Connect and connected to Adapty. Prices come from the store, not from the flow.
+
+**Prompt to paste**
+
+```text
+Clone https://github.com/melikesezer2019-cloud/photo-recovery-flow-rebuild and open index.html in a browser.
+Using the flow-generator skill, rebuild its Prototype view as an Adapty flow for my app <APP NAME>:
+- Screens in order: setup, intro slides, what was lost, when, scan, ready, paywall, offer on close, notifications.
+- English and Turkish, with the copy from the T table in index.html.
+- The paywall headline and the days-left card follow the "what" and "when" answers (conditional text).
+- Closing the paywall goes to the offer screen with the 3-day free trial on the yearly plan.
+- Permission buttons fire custom actions request_att, request_photos and request_push, then go to the next screen.
+- Upload the images in img/ and use my existing weekly and yearly products.
+Show me a preview of every screen before publishing, then attach the flow to a new placement.
+```
+
+**What stays on your side**
+
+- A handler in the app for `request_att`, `request_photos` and `request_push` that shows the iOS prompt.
+- Custom fonts, which are uploaded in the Flow Builder by hand.
+- A check of the scan animation on a device; the CLI preview shows one still frame.
+- The overview page, side panel, walkthrough and QR code belong to the audit and are not part of the flow.
+
 ## Grounding
 
 Impact ranges are Adapty's expected effect from teardowns and A/B tests across subscription apps — not measured lift for Photo Recovery. Every price, rating, quote and claim comes from Photo Recovery's own App Store listing, website and in-app screens.
