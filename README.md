@@ -16,6 +16,10 @@ Five ideas to unlock more revenue from the traffic Photo Recovery already has, p
 
 The prototype has English and Turkish, light and dark, a 30-second walkthrough, and jump chips to open any screen.
 
+## Building idea 3 in Adapty
+
+A flow can't show iOS system prompts itself, but a button's custom action can ask the app to. Give each permission card's button a custom action (`request_att`, `request_photos`, and `request_push` after the paywall), followed by Navigate next. The app shows the matching system prompt when it receives the ID. The order and the cards stay editable from the dashboard. Log the tracking answer as a user attribute to compare opt-in, not just purchases. See [Actions](https://adapty.io/docs/onboarding-actions.md) in the Adapty docs.
+
 ## Grounding
 
 Impact ranges are Adapty's expected effect from teardowns and A/B tests across subscription apps — not measured lift for Photo Recovery. Every price, rating, quote and claim comes from Photo Recovery's own App Store listing, website and in-app screens.

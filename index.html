@@ -409,6 +409,7 @@ a{color:inherit}
 .pn-kept b{color:#2E2E35;font-weight:700}
 .pn-foot{font-size:11.5px;line-height:1.55;color:var(--panel-muted);border-top:1px solid var(--panel-line);
   padding-top:14px;margin-top:26px}
+.pn-build b{color:var(--panel-ink)}.pn-build code{font:600 11.5px/1 ui-monospace,Menlo,monospace;color:var(--panel-ink)}
 .pn-sep{height:1px;background:var(--panel-line);margin:26px 0}
 .hidden{display:none !important}
 </style>
@@ -1074,6 +1075,7 @@ var PANEL = {
 setup:{n:3,t:'Ask for tracking first, one prompt at a time',
  hyp:'Try asking for tracking first and photo access second, and leaving notifications until after the paywall, <b>because today three system prompts fire back to back with tracking last, when people are most tired of saying yes</b>. Fewer prompts in a row, and the one that feeds your ad measurement goes first.',
  kept:'Your “Let’s set everything up for you” screen — the green shield, the pink and blue tiles, your tracking and photo-access cards with their own copy, your button and “Trusted by 8M+ Users”.',
+ build:'Build it in an Adapty flow: each card’s button gets a <b>custom action</b> — <code>request_att</code>, <code>request_photos</code>, later <code>request_push</code> — then Navigate next. Your app shows the system prompt when it receives the ID; the order and the cards stay editable in the dashboard. Log the tracking answer as a user attribute to compare opt-in, not just purchases.',
  out:'CR +5–10%'},
 intro:{ctx:true,t:'Your three intro slides',
  kept:'Untouched — the Library mockup, the Duplicates phone, the full-bleed photography, your three lines of copy, the pager dots and your button, in your order.'},
@@ -1106,6 +1108,7 @@ offer:{n:1,t:'Offer the free trial when they close',
 perms:{n:3,t:'Ask for tracking first, one prompt at a time',
  hyp:'Try asking for notifications here, after the paywall, <b>because it is the one prompt the scan does not need, and every prompt before the price pulls attention away from it</b>. The copy is the copy from your own setup screen.',
  kept:'Your notifications card — the red bell and its description — and your button.',
+ build:'Build it in an Adapty flow: each card’s button gets a <b>custom action</b> — <code>request_att</code>, <code>request_photos</code>, later <code>request_push</code> — then Navigate next. Your app shows the system prompt when it receives the ID; the order and the cards stay editable in the dashboard. Log the tracking answer as a user attribute to compare opt-in, not just purchases.',
  out:'CR +5–10%'}
 };
 function outBlock(lab,val){
@@ -1128,6 +1131,7 @@ function paintPanel(){
          + outBlock('Potential outcome · based on Adapty data', d.out2);
     }
     h += '<div class="pn-kept"><b>Your design, unchanged.</b> '+d.kept+'</div>';
+    if(d.build) h += '<div class="pn-kept pn-build">'+d.build+'</div>';
   }
   if(S.lang!=='en') h += '<div class="pn-kept"><b>Language.</b> Screens are shown in Turkish, the language of your own Turkish screens. Store prices stay as published; the rating is your Turkish App Store’s own; the website quote stays verbatim in English.</div>';
   h += '<div class="pn-foot">Ranges are Adapty’s expected effect from tests across 30,000+ subscription apps — not measured lift for Photo Recovery. '
